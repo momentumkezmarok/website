@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moment.um — občianska iniciatíva v Kežmarku</title>
+  <meta name="description" content="Moment.um je občianska iniciatíva z Kežmarku, ktorá prepája ľudí, nápady a aktivity pre lepší život v meste a regióne." />
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #377cf0;
+      --yellow: #f1df00;
+      --black: #1f1b20;
+      --white: #f6f5f2;
+      --cream: #f2efcf;
+      --max: 1160px;
+      --radius: 28px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(246, 245, 242, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(31, 27, 32, 0.08);
+    }
+
+    .topbar-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .nav a {
+      opacity: 0.75;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible { opacity: 1; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--blue);
+      padding: 56px 0 70px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: var(--cream);
+      opacity: 0.95;
+    }
+
+    .hero::before {
+      width: 180px;
+      height: 180px;
+      top: -60px;
+      right: -40px;
+    }
+
+    .hero::after {
+      width: 74px;
+      height: 74px;
+      left: 4%;
+      bottom: 10%;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+      min-height: calc(100vh - 120px);
+    }
+
+    .bubble {
+      position: relative;
+      background: var(--white);
+      border-radius: 46% 54% 48% 52% / 44% 45% 55% 56%;
+      box-shadow: var(--shadow);
+      padding: 110px 110px 120px 110px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bubble::after {
+      content: "";
+      position: absolute;
+      left: 12%;
+      bottom: -34px;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 46px solid var(--white);
+      transform: rotate(24deg);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: var(--blue);
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 16px;
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    h1 { font-size: clamp(3rem, 8vw, 6.1rem); }
+    h2 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h3 { font-size: clamp(1.2rem, 2.4vw, 1.7rem); }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      max-width: 34rem;
+      margin-bottom: 0;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .logo-card,
+    .card,
+    .panel {
+      background: rgba(255,255,255,0.96);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .logo-card {
+      padding: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 148px;
+    }
+
+    .logo-card img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+    }
+
+    .card, .panel { padding: 24px; }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section.white { background: var(--white); }
+    .section.yellow { background: var(--yellow); }
+    .section.blue { background: var(--blue); }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .why-grid,
+    .cta-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .why-grid { grid-template-columns: 1.05fr 0.95fr; }
+    .cta-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+
+    .panel.dark,
+    .blue .panel {
+      background: rgba(31,27,32,0.94);
+      color: white;
+    }
+
+    .panel.dark h3,
+    .panel.dark h2,
+    .blue .panel h3,
+    .blue .panel h2 { color: white; }
+
+    .kicker {
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      opacity: 0.8;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+      display: grid;
+      gap: 32px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    ul.clean li {
+      position: relative;
+      padding-left: 26px;
+      font-weight: 600;
+    }
+
+    ul.clean li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      font-weight: 900;
+      font-size: 1.3rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      font-weight: 800;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      opacity: 0.96;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: white;
+    }
+
+    form.newsletter-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 16px;
+      border: 1px solid rgba(31,27,32,0.15);
+      background: white;
+      padding: 0 16px;
+      font: inherit;
+      color: var(--black);
+    }
+
+    .hint {
+      font-size: 0.92rem;
+      opacity: 0.78;
+    }
+
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 28px 0 40px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand img {
+      height: 34px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .muted { opacity: 0.75; }
+
+    @media (max-width: 940px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .why-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .bubble {
+        padding: 40px 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 12px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        gap: 12px;
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+
+      .card,
+      .panel,
+      .logo-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#top" class="brand" aria-label="Moment.um domov">
+        <img src="logo.png" alt="Moment.um logo" />
+      </a>
+      <nav class="nav" aria-label="Hlavná navigácia">
+        <a href="#preco">Prečo to robíme</a>
+        <a href="#o-nas">O iniciatíve</a>
+        <a href="#temy">Čomu sa venujeme</a>
+        <a href="#aktivity">Čo robíme</a>
+        <button class="ml-onclick-form" onclick="ml('show', 'yWKl4x', true)" style="background:none;border:none;font:inherit;font-weight:700;cursor:pointer;opacity:.75;">Newsletter</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="bubble">
+          <span class="eyebrow">Občianska iniciatíva z Kežmarku</span>
+          <h1>Ľudia, nápady a aktivity pre lepší Kežmarok</h1>
+          <p class="lead">
+            Moment.um prepája ľudí, ktorí chcú aktívne zlepšovať život v meste a regióne
+            cez diskusie, prednášky, komunitné aktivity a nové impulzy pre verejný život.
+          </p>
+        </div>
+
+        <div class="hero-side">
+          <div class="logo-card">
+            <img src="logo.png" alt="Moment.um logo" />
+          </div>
+          <div class="card">
+            <div class="kicker">Vízia</div>
+            <h3>Živé mesto so silnou komunitou</h3>
+            <p>
+              Chceme podporovať aktívnych ľudí, otvárať dôležité témy a vytvárať priestor
+              pre spoluprácu, kultúru a pozitívnu zmenu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preco" class="section yellow">
+      <div class="wrap why-grid">
+        <div class="section-intro">
+          <div class="kicker">Prečo to robíme</div>
+          <h2>Mesto sa mení vďaka ľuďom, ktorým na ňom záleží</h2>
+          <p>
+            Veríme, že dobré mesto nevzniká samo od seba. Vzniká vďaka ľuďom, ktorí sa
+            zaujímajú o svoje okolie, spájajú sa a chcú ho zlepšovať.
+          </p>
+          <p>
+            Moment.um vznikol ako priestor pre nápady, stretnutia a iniciatívy, ktoré môžu
+            mať reálny dopad na Kežmarok a jeho okolie.
+          </p>
+        </div>
+
+        <div class="panel dark">
+          <div class="kicker">Na čom nám záleží</div>
+          <ul class="clean">
+            <li>prepájať aktívnych ľudí v meste a regióne</li>
+            <li>otvárať dôležité témy o budúcnosti Kežmarku</li>
+            <li>vytvárať priestor pre diskusiu a nové nápady</li>
+            <li>podporovať komunitu, spoluprácu a občiansku angažovanosť</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-nas" class="section white">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="kicker">O iniciatíve</div>
+          <h2>Čo je Moment.um</h2>
+          <p>
+            Moment.um je platforma ľudí z Kežmarku a okolia, ktorí chcú aktívne meniť svoj
+            životný priestor. Organizujeme diskusie, prednášky a komunitné aktivity,
+            prepájame rôzne pohľady a hľadáme spôsoby, ako prispieť k pozitívnej zmene.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel">
+            <div class="kicker">Misia</div>
+            <h3>Spájať ľudí a nápady</h3>
+            <p>
+              Vytvárať priestor pre verejný dialóg, spoluprácu a konkrétne aktivity.
+            </p>
+          </article>
+
+          <article class="panel">
+            <div class="kicker">Smerovanie</div>
+            <h3>História aj budúcnosť</h3>
+            <p>
+              Opierame sa o historický odkaz mesta a zároveň myslíme moderne a ambiciózne.
+            </p>
+          </article>
+
+          <article class="panel">
+            <div class="kicker">Komunita</div>
+            <h3>Otvorená platforma</h3>
+            <p>
+              Pre ľudí, ktorí chcú prinášať podnety, organizovať aktivity a zapájať sa do diania.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="temy" class="section blue">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="kicker" style="color: rgba(255,255,255,0.86);">Čomu sa venujeme</div>
+          <h2 style="color: white;">Témy, ktoré rozvíjame</h2>
+          <p style="color: rgba(255,255,255,0.9);">
+            Zameriavame sa na oblasti, ktoré ovplyvňujú kvalitu života v meste a môžu posilniť
+            jeho kultúrny, komunitný aj verejný rozmer.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="panel">
+            <h3>Kultúra a identita</h3>
+            <p>História mesta, regionálne príbehy, lokálne osobnosti a kultúrny život.</p>
+          </article>
+          <article class="panel">
+            <h3>Verejný priestor</h3>
+            <p>Architektúra, doprava, mestské zásahy, verejné miesta a ich budúcnosť.</p>
+          </article>
+          <article class="panel">
+            <h3>Komunita a spolužitie</h3>
+            <p>Prepájanie ľudí, občianska angažovanosť a susedské vzťahy.</p>
+          </article>
+          <article class="panel">
+            <h3>Mládež a vzdelávanie</h3>
+            <p>Priestor pre mladých ľudí, diskusie a rozvoj nových impulzov.</p>
+          </article>
+          <article class="panel">
+            <h3>Zdravie a motivácia</h3>
+            <p>Duševné zdravie, osobný rozvoj a témy dôležité pre každodenný život.</p>
+          </article>
+          <article class="panel">
+            <h3>Turizmus a región</h3>
+            <p>Prepojenie Kežmarku s Tatrami a regiónom cez lokálne miesta a aktivity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="aktivity" class="section white">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="kicker">Čo robíme</div>
+          <h2>Formáty aktivít</h2>
+          <p>
+            Moment.um organizuje rôzne typy stretnutí a aktivít, ktoré prepájajú ľudí,
+            otvárajú dôležité témy a prinášajú nové impulzy pre život v meste.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="panel dark">
+            <div class="kicker">Aktivity</div>
+            <ul class="clean">
+              <li>diskusie a verejné rozhovory</li>
+              <li>prednášky a vzdelávacie podujatia</li>
+              <li>komunitné brigády a dobrovoľnícke aktivity</li>
+              <li>kultúrne a spoločenské podujatia</li>
+              <li>prepájanie aktívnych ľudí a spoluprác</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <div class="kicker">Prístup</div>
+            <p>
+              Snažíme sa vytvárať podujatia, ktoré majú zmysel pre komunitu a prinášajú
+              hodnotnú diskusiu alebo nové pohľady na mesto. Moment.um je priestor, kde sa
+              môžu stretnúť ľudia s rôznymi skúsenosťami, názormi a nápadmi.
+            </p>
+            <p>
+              Dôležitá je otvorenosť, spolupráca a rešpektujúci dialóg.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section yellow">
+      <div class="wrap cta-grid">
+        <div class="panel dark">
+          <div class="kicker">Zapoj sa</div>
+          <h2>Chceš byť pri tom?</h2>
+          <p>
+            Prihlás sa do nášho newslettera a budeme ti posielať informácie o
+            pripravovaných podujatiach, aktivitách a novinkách Moment.um.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="kicker">Newsletter</div>
+          <h3>Prihlás sa</h3>
+          <p class="hint">
+            Zostaň v kontakte s iniciatívou Moment.um.
+          </p>
+          <button class="btn btn-dark ml-onclick-form" onclick="ml('show', 'yWKl4x', true)">Prihlásiť sa</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner" style="align-items:flex-start;">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Moment.um logo" />
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,auto);gap:18px 32px;align-items:center;">
+        <a href="https://www.facebook.com/momentumkezmarok/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-weight:600;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.8V12h2.8V9.7c0-2.8 1.6-4.3 4.1-4.3 1.2 0 2.4.2 2.4.2v2.6h-1.4c-1.4 0-1.8.9-1.8 1.8V12h3l-.5 2.9h-2.5v7A10 10 0 0022 12z"/>
+          </svg>
+          Facebook
+        </a>
+
+        <a href="https://www.instagram.com/momentumkezmarok/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;font-weight:600;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 5.8A4.2 4.2 0 1016.2 12 4.2 4.2 0 0012 7.8zm0 6.9A2.7 2.7 0 1114.7 12 2.7 2.7 0 0112 14.7zM17.8 6.2a1 1 0 101 1 1 1 0 00-1-1z"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </footer>
+
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+.push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '1910880');
+</script>
+<!-- End MailerLite Universal -->
+</body>
+</html>
