@@ -133,7 +133,7 @@
       background: var(--white);
       border-radius: 46% 54% 48% 52% / 44% 45% 55% 56%;
       box-shadow: var(--shadow);
-      padding: 110px 110px 120px 110px;
+      padding: 96px 96px 116px;
       min-height: 520px;
       display: flex;
       flex-direction: column;
@@ -149,6 +149,10 @@
       border-right: 18px solid transparent;
       border-top: 46px solid var(--white);
       transform: rotate(24deg);
+    }
+
+    .bubble h1 {
+      font-size: clamp(2.5rem, 5vw, 4.1rem);
     }
 
     .eyebrow {
@@ -224,6 +228,7 @@
     .section.white { background: var(--white); }
     .section.yellow { background: var(--yellow); }
     .section.blue { background: var(--blue); }
+    .section.cream { background: var(--cream); }
 
     .section-intro {
       max-width: 760px;
@@ -232,6 +237,7 @@
 
     .grid-2,
     .grid-3,
+    .grid-4,
     .why-grid,
     .cta-grid {
       display: grid;
@@ -240,6 +246,7 @@
 
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .why-grid { grid-template-columns: 1.05fr 0.95fr; }
     .cta-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
 
@@ -311,6 +318,15 @@
       background: rgba(255,255,255,0.82);
       font-weight: 800;
     }
+
+    .panel.person { padding: 18px 20px; }
+
+    .person h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .person .hint { margin-bottom: 0; }
 
     .btn {
       display: inline-flex;
@@ -396,12 +412,17 @@
         grid-template-columns: 1fr;
       }
 
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .hero {
         padding-top: 34px;
       }
 
       .bubble {
-        padding: 40px 28px;
+        border-radius: 44px 60px 52px 64px / 52px 44px 60px 48px;
+        padding: 48px 30px 56px;
       }
     }
 
@@ -422,6 +443,11 @@
         padding: 64px 0;
       }
 
+      .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
       .card,
       .panel,
       .logo-card {
@@ -439,6 +465,7 @@
       <nav class="nav" aria-label="Hlavná navigácia">
         <a href="#preco">Prečo to robíme</a>
         <a href="#o-nas">O iniciatíve</a>
+        <a href="#kto-sme">Kto sme</a>
         <a href="#temy">Čomu sa venujeme</a>
         <a href="#aktivity">Čo robíme</a>
         <button class="ml-onclick-form" onclick="ml('show', 'yWKl4x', true)" style="background:none;border:none;font:inherit;font-weight:700;cursor:pointer;opacity:.75;">Newsletter</button>
@@ -536,6 +563,61 @@
             <p>
               Pre ľudí, ktorí chcú prinášať podnety, organizovať aktivity a zapájať sa do diania.
             </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kto-sme" class="section cream">
+      <div class="wrap">
+        <div class="section-intro">
+          <div class="kicker">Kto sme</div>
+          <h2>Ľudia za iniciatívou</h2>
+          <p>
+            moment.um tvoria ľudia z Kežmarku a okolia s rôznymi skúsenosťami a profesiami,
+            ktorých spája chuť robiť pre mesto niečo navyše.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <article class="panel person">
+            <h3>Marek Stolarčík</h3>
+            <p class="hint">Digitálne média a videomarketing</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Tomáš Tremba</h3>
+            <p class="hint">Tvorca, remeselník</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Michaela Bednárová</h3>
+            <p class="hint">Textilná dizajnérka</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Šimon Štancel</h3>
+            <p class="hint">Šport a podnikanie</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Oto Imrich</h3>
+            <p class="hint">Technológie a automatizácia</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Jaroslav Šleboda</h3>
+            <p class="hint">Dobrodruh a vydavateľ</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Marek Reznický</h3>
+            <p class="hint">Architekt a dizajnér</p>
+          </article>
+
+          <article class="panel person">
+            <h3>Pavol Kulanga</h3>
+            <p class="hint">Skalnatá chata</p>
           </article>
         </div>
       </div>
