@@ -4,20 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>moment.um — občianska iniciatíva v Kežmarku</title>
-  <meta name="description" content="moment.um je občianska iniciatíva z Kežmarku, ktorá prepája ľudí, nápady a aktivity pre lepší život v meste a regióne." />
-  <link rel="canonical" href="https://moment-um.sk">
+  <meta name="description" content="Občianska iniciatíva moment.um prináša momentum pre Kežmarok – prepája ľudí, nápady a aktivity pre lepší život v meste a regióne." />
+  <link rel="canonical" href="https://www.moment-um.sk/">
   <meta property="og:title" content="moment.um — občianska iniciatíva v Kežmarku">
   <meta property="og:description" content="Ľudia, nápady a aktivity pre lepší Kežmarok.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://moment-um.sk">
+  <meta property="og:url" content="https://www.moment-um.sk/">
+  <meta property="og:locale" content="sk_SK">
+  <meta property="og:site_name" content="moment.um">
+  <meta property="og:image" content="https://www.moment-um.sk/og_img.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="moment.um — občianska iniciatíva v Kežmarku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="moment.um">
   <meta name="twitter:description" content="Ľudia, nápady a aktivity pre lepší Kežmarok.">
+  <meta name="twitter:image" content="https://www.moment-um.sk/og_img.png">
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.moment-um.sk/#website",
+        "url": "https://www.moment-um.sk/",
+        "name": "moment.um",
+        "alternateName": ["momentum", "moment um", "momentum Kežmarok"],
+        "inLanguage": "sk",
+        "publisher": { "@id": "https://www.moment-um.sk/#organization" }
+      },
+      {
+        "@type": "NGO",
+        "@id": "https://www.moment-um.sk/#organization",
+        "name": "moment.um",
+        "alternateName": ["momentum", "moment um", "momentum Kežmarok", "moment-um"],
+        "description": "Občianska iniciatíva z Kežmarku, ktorá prepája ľudí, nápady a aktivity pre lepší život v meste a regióne prostredníctvom diskusií, prednášok a komunitných aktivít.",
+        "url": "https://www.moment-um.sk/",
+        "logo": "https://www.moment-um.sk/logo.png",
+        "image": "https://www.moment-um.sk/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kežmarok",
+          "addressRegion": "Prešovský kraj",
+          "addressCountry": "SK"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Kežmarok" },
+          { "@type": "Place", "name": "Vysoké Tatry a okolie Kežmarku" }
+        ],
+        "knowsAbout": [
+          "Kultúra a identita",
+          "Verejný priestor",
+          "Komunita a spolužitie",
+          "Mládež a vzdelávanie",
+          "Zdravie a motivácia",
+          "Turizmus a región"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/momentumkezmarok/",
+          "https://www.instagram.com/momentumkezmarok/"
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       --blue: #377cf0;
@@ -401,6 +457,11 @@
       filter: brightness(0) invert(1);
     }
 
+    .footer-brand p {
+      margin: 12px 0 0;
+      font-size: 0.92rem;
+    }
+
     .muted { opacity: 0.75; }
 
     @media (max-width: 940px) {
@@ -728,6 +789,7 @@
     <div class="wrap footer-inner" style="align-items:flex-start;">
       <div class="footer-brand">
         <img src="logo.png" alt="moment.um logo" />
+        <p class="muted">Sledujte nás: @momentumkezmarok</p>
       </div>
 
       <div style="display:grid;grid-template-columns:repeat(2,auto);gap:18px 32px;align-items:center;">
